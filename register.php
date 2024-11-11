@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
     // Validar reCAPTCHA
-    $secretKey = 'YOUR_SECRET_KEY'; // Coloca aquí tu clave secreta de reCAPTCHA
+    $secretKey = '6Lc27XoqAAAAAI1DJxNXWx05SF3ZXeM-Q0T-62YN'; // Clave secreta de reCAPTCHA
     $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
 
     $response = file_get_contents($recaptchaUrl . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         
         <!-- reCAPTCHA Widget -->
-        <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div> <!-- Coloca aquí tu clave de sitio -->
+        <div class="g-recaptcha" data-sitekey="6Lc27XoqAAAAAEm_-07HK2NeJWo4tcNw7klZbbuK"></div> 
 
         <button type="submit">Registrarse</button>
     </form>
