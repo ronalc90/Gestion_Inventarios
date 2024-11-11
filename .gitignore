@@ -1,0 +1,51 @@
+# Archivos de sistema y de configuración
+*.DS_Store
+*.DS_Store?
+Thumbs.db
+ehthumbs.db
+*.lnk
+
+# Archivos de entorno y configuración
+.env
+config.php
+bd.txt  # Archivo de base de datos o configuraciones locales
+
+# Archivos de Composer
+/vendor/
+composer.lock
+composer.phar
+
+# Dependencias externas y bibliotecas
+PhpSpreadsheet-3.3.0/
+font/
+
+# Archivos de caché y temporales
+/tmp/
+*.tmp
+*.cache
+*.log
+*.bak
+*.swp
+*.orig
+*.old
+
+# Archivos de editor y sistema
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de compilación de frontend
+node_modules/
+dist/
+public/css/
+public/js/
+
+# Archivos y carpetas de estilos
+styles/
+
+# Otros archivos innecesarios
+*.log
+*.sql
+*.sqlite
+*.sqlite3
