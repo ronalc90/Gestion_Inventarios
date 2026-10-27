@@ -11,13 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
     // Validar reCAPTCHA
-    $secretKey = '6Lc27XoqAAAAAI1DJxNXWx05SF3ZXeM-Q0T-62YN'; // Clave secreta de reCAPTCHA
+    // Clave secreta de reCAPTCHA: se lee del entorno, nunca del código (el repositorio es público).
+    $secretKey = getenv('RECAPTCHA_SECRET_KEY') ?: '';
     $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
 
-    $response = file_get_contents($recaptchaUrl . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-    $responseKeys = json_decode($response, true);
+    $response = $secretKey === ''
+        ? false
+        : file_get_contents($recaptchaUrl . '?secret=' . urlencode($secretKey) . '&response=' . urlencode($recaptchaResponse));
+    $responseKeys = $response === false ? null : json_decode($response, true);
 
-    if (!$responseKeys["success"]) {
+    if (empty($responseKeys["success"])) {
         $message = 'Por favor, completa el reCAPTCHA.';
     } elseif ($password !== $passwordConfirm) {
         $message = 'Las contraseñas no coinciden.';
